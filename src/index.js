@@ -2,7 +2,8 @@ import 'babel-polyfill'
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import './styles/app.css'
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import Nav from './components/nav'
 
 
 class App extends Component {
@@ -11,21 +12,6 @@ class App extends Component {
 			<div>Heading</div>
 			<Nav></Nav>
 			{this.props.children}
-		</div>
-	}
-}
-
-class Nav extends Component {
-	render() {
-		return <div>
-			<ul>
-				<li>
-					<Link to='/auth'>Логин</Link>
-				</li>
-				<li>
-					<Link to='/main'>Главная</Link>
-				</li>
-			</ul>
 		</div>
 	}
 }
