@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import './nav.scss'
 
 export default class Nav extends Component {
 	render() {
-		return <div>
+		return <div className='nav'>
 			<ul>
 				<li>
 					<Link to='/auth'>Логин</Link>

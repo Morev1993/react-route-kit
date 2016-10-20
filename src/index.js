@@ -1,9 +1,9 @@
 import 'babel-polyfill'
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import './styles/app.css'
+import './styles/app.scss'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import Nav from './components/nav'
+import Nav from './components/nav/nav'
 
 
 class App extends Component {
