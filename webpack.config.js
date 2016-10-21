@@ -7,7 +7,6 @@ module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
 		'webpack-hot-middleware/client',
-		'babel-polyfill',
 		'./src/index'
 	],
 	output: {
@@ -38,9 +37,8 @@ module.exports = {
 				],
 				exclude: /node_modules/,
 				query: {
-		        	presets: [ "es2015", "stage-0", "react", "react-hmre" ]
-		      	},
-				plugins: ['transform-runtime'],
+		        	presets: [ "es2015", "react", "react-hmre" ]
+		      	}
 			},
 			{
 				test: /\.css$/,
