@@ -31,11 +31,15 @@ module.exports = {
 		],
 		loaders: [
 			{
-				loaders: ['react-hot', 'babel-loader'],
+				test: /\.js$/,
+				loader: "babel",
 				include: [
 					path.resolve(__dirname, "src"),
 				],
-				test: /\.js$/,
+				exclude: /node_modules/,
+				query: {
+		        	presets: [ "es2015", "stage-0", "react", "react-hmre" ]
+		      	},
 				plugins: ['transform-runtime'],
 			},
 			{

@@ -6,21 +6,19 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import Nav from './components/nav/nav'
 
 
-class App extends Component {
-	render() {
-		return <div className='container'>
-			<div>Heading</div>
-			<Nav></Nav>
-			{this.props.children}
-		</div>
-	}
-}
+const App = ({ children }) => (
+	<div className='container'>
+		<div>Heading</div>
+		<Nav></Nav>
+		{children}
+	</div>
+);
 
 
 class AuthPage extends Component {
 	render() {
 		return <div>
-			<h1>Страница логина</h1>
+			<h1>Страница логин</h1>
 			<button>Войти</button>
 		</div>
 	}
@@ -30,7 +28,7 @@ class MainPage extends Component {
 	render() {
 		return <div>
 			<h1>Главная страница</h1>
-			<p>Приветики</p>
+			<p>Приветик</p>
 		</div>
 	}
 }
