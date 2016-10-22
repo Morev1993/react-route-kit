@@ -1,23 +1,19 @@
 var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer');
-var precss = require('precss')
+var precss = require('precss');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 	entry: [
-		'webpack-hot-middleware/client',
 		'./src/index'
 	],
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js',
+		filename: 'app.js',
 		publicPath: '/static/'
 	},
-	plugins: [
-		new webpack.optimize.OccurenceOrderPlugin(),
-		new webpack.HotModuleReplacementPlugin()
-	],
 	module: {
 		preLoaders: [
 			{
@@ -47,7 +43,11 @@ module.exports = {
 			{
 		        test: /\.scss$/,
 		        loaders: ['style', 'css', 'sass']
-		      }
+	      	}/*,
+	      	{
+	      		test: /\.scss$/, 
+	      		loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
+	      	}*/
 		]
 	},
 	postcss: function() {
@@ -55,5 +55,9 @@ module.exports = {
 	},
 	sassLoader: {
     	includePaths: [path.resolve(__dirname, "./src")]
-  	}
+  	},
+  	plugins: [
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new ExtractTextPlugin("app.css")
+	]
 }

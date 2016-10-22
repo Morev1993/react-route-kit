@@ -24,6 +24,7 @@
     "eslint-plugin-react": "^3.16.1",
     "express": "^4.13.4",
     "express-urlrewrite": "^1.2.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.10.1",
     "postcss-loader": "^0.13.0",
     "precss": "^1.4.0",
@@ -38,6 +39,7 @@
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "babel-runtime": "^6.3.19",
+    "bootstrap-sass": "^3.3.7",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^4.4.5",

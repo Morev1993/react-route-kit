@@ -9,6 +9,7 @@ ehthumbs.db
 Thumbs.db
 
 node_modules
+bower_components
 npm-debug.log
 book_img
 dist
