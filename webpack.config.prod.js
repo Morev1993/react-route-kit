@@ -2,10 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-source-map',
 	entry: [
 		'babel-polyfill',
 		'./src/index'
@@ -34,7 +35,7 @@ module.exports = {
 				],
 				exclude: /node_modules/,
 				query: {
-		        	presets: [ "es2015", "stage-0", "react", "react-hmre" ]
+		        	presets: [ "es2015", "react" ]
 		      	},
 		      	plugins: ['transform-runtime']
 			},
@@ -42,9 +43,9 @@ module.exports = {
 				test: /\.css$/,
 				loader: 'style-loader!css-loader!postcss-loader'
 			},
-			{
-		        test: /\.scss$/,
-		        loaders: ['style', 'css', 'sass']
+	      	{
+	      		test: /\.scss$/, 
+	      		loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
 	      	}
 		]
 	},
@@ -55,6 +56,14 @@ module.exports = {
     	includePaths: [path.resolve(__dirname, "./src")]
   	},
   	plugins: [
+  		new ExtractTextPlugin("app.css"),
+		new webpack.optimize.UglifyJsPlugin({
+		    compress: {
+		        warnings: false
+		    }
+		}),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.DedupePlugin(),
 		new HtmlWebpackPlugin({
 	      template: 'index.html',
 	      inject: 'body'

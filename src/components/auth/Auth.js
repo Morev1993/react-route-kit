@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.scss'
+import './Auth.scss'
 
 export default class Auth extends Component {
 	render() {
