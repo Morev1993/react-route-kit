@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import UserMenu from '../components/UserMenu/UserMenu'
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className='container'>
-        <h1>Prototype system</h1>
-        <ul>
-          <li><Link to='/auth'>Login</Link></li>
-          <li><Link to='/project'>Project</Link></li>
-        </ul>
-        {this.props.children}
-      </div>
-    )
-  }
+const mapStateToProps = state => ({
+    appName: state.appName
+})
+
+class App extends Component {
+    render() {
+        return (
+            <div className='container'>
+                <div className='typepage'>
+                    <div className='row'>
+                        <div className='col-sm-9'>
+                            <h1>{this.props.appName}</h1>
+                            <Breadcrumbs></Breadcrumbs>
+                            {this.props.children}
+                        </div>
+                        <div className='col-sm-3'>
+                            <UserMenu/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            )
+    }
 }
+
+App.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps, () => ({}))(App)
