@@ -1,5 +1,5 @@
-# react-route-kit
-starter kit for react with history router (chrome, firefox, ie, safari)
+# react-redux-route-kit
+starter kit for react-redux with history router (chrome, firefox, ie, safari)
 
 npm i
 
